@@ -222,7 +222,7 @@ try {
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="hero-badge">✦ Desde 1987 ✦</div>
+      <div class="hero-badge">✦ Desde 1987 . v1.0 ✦</div>
       <h1>Cardápio<span>Digital</span></h1>
       <p class="hero-sub">Cozinha italiana autêntica · São Paulo, SP</p>
       <div class="divider">
