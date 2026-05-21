@@ -1,0 +1,30 @@
+# Credenciais e variáveis de ambiente
+.env
+*.env
+env.php
+config.local.php
+
+# Chaves SSH e certificados (NUNCA commitar)
+*.pem
+*.key
+*.crt
+*.cert
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Dependências
+vendor/
+node_modules/
+
+# Arquivos temporários
+*.tmp
+*.swp
+*.bak
+*~
+.cache/
