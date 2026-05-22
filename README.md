@@ -67,7 +67,7 @@ cardapio-digital/
 ├── Dockerfile              # Imagem Docker (php:8.4-fpm-bookworm + Nginx)
 ├── nginx.conf              # Config do Nginx (logs em stdout/stderr)
 ├── www.conf                # Config do PHP-FPM (clear_env = no)
-├── health-check.sh         # Script bash de monitoramento (cron a cada 5min)
+├── health-check.sh         # Script bash de monitoramento (cron a cada 5 minutos)
 ├── README.md               # Esta documentação
 └── .gitignore              # Padrões ignorados pelo Git
 ```
