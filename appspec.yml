@@ -9,6 +9,7 @@ os: linux
 files:
   - source: /
     destination: /usr/share/nginx/html
+    overwrite: yes
 
 hooks:
   BeforeInstall:
