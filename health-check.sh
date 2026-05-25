@@ -14,7 +14,7 @@ echo "[$DATA] Verificando $URL..."
 STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL")
 
 if [ "$STATUS" -eq 200 ]; then
-    echo "[$DATA] OK — site respondendo. Status: $STATUS"
+    echo "[$DATA] OK — site respondendo. Status: $STATUS (deploy via pipeline)"
     exit 0
 else
     echo "[$DATA] FALHA — status inesperado: $STATUS"
