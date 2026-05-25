@@ -1,0 +1,22 @@
+# appspec.yml
+# CardápioDigital - Aula 5.3
+# Instrui o CodeDeploy sobre onde copiar arquivos e quais scripts executar
+# Deve ficar na RAIZ do repositório (não em subpasta)
+
+version: 0.0
+os: linux
+
+files:
+  - source: /
+    destination: /usr/share/nginx/html
+
+hooks:
+  BeforeInstall:
+    - location: scripts/stop_server.sh
+      timeout: 300
+      runas: root
+
+  AfterInstall:
+    - location: scripts/start_server.sh
+      timeout: 300
+      runas: root

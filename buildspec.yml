@@ -1,0 +1,15 @@
+# buildspec.yml
+# CardápioDigital - Aula 5.3 (Pipeline EC2)
+# Instrui o CodeBuild a apenas empacotar os arquivos do repositório
+# Para a pipeline ECS (Aula 5.4), este arquivo é REESCRITO
+
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo "Empacotando arquivos..."
+
+artifacts:
+  files:
+    - '**/*'
