@@ -5,11 +5,11 @@
 
 version: 0.0
 os: linux
+file_existis_behavior: OVERWRITE
 
 files:
   - source: /
     destination: /usr/share/nginx/html
-    overwrite: yes
 
 hooks:
   BeforeInstall:
