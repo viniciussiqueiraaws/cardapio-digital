@@ -1,15 +1,22 @@
-# buildspec.yml
-# CardápioDigital - Aula 5.3 (Pipeline EC2)
-# Instrui o CodeBuild a apenas empacotar os arquivos do repositório
-# Para a pipeline ECS (Aula 5.4), este arquivo é REESCRITO
-
 version: 0.2
 
 phases:
+  pre_build:
+    commands:
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | \
+        docker login --username AWS --password-stdin $ECR_URI
+
   build:
     commands:
-      - echo "Empacotando arquivos..."
+      - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c1-7)
+      - docker build -t $ECR_URI:$IMAGE_TAG .
+      - docker push $ECR_URI:$IMAGE_TAG
+
+  post_build:
+    commands:
+      - printf '[{"name":"%s","imageUri":"%s"}]' \
+        $CONTAINER_NAME $ECR_URI:$IMAGE_TAG > imagedefinitions.json
 
 artifacts:
   files:
-    - '**/*'
+    - imagedefinitions.json
