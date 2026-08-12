@@ -72,7 +72,7 @@ cardapio-digital/
 └── .gitignore              # Padrões ignorados pelo Git
 ```
 
-> Outros artefatos (pipeline CI/CD, infraestrutura como código) são adicionados ao repositório nas aulas seguintes do curso.
+> Os artefatos da pipeline CI/CD (`appspec.yml`, `buildspec.yml`, `scripts/`) são adicionados ao repositório nas aulas seguintes do curso.
 
 ---
 
@@ -94,7 +94,7 @@ Em 2-3 minutos, o site em produção (`cardapiodigitalaws.com.br`) reflete a mud
 - Banco de dados em **subnet privada** — sem acesso direto da internet
 - HTTPS obrigatório via ACM (listener 80 do ALB faz redirect 301 → 443)
 - WAF ativo na frente do ALB (Anti-DDoS L7, Common Rule Set, SQL Injection, Known Bad Inputs)
-- IP público da task ECS desabilitado — containers só são acessíveis via ALB
+- Security Group dos containers só aceita tráfego vindo do Security Group do ALB — na prática, acesso à aplicação somente via ALB (a task tem IP público apenas para o pull da imagem no ECR)
 - `.gitignore` cobre `.pem`, `.key`, `.env`, `*.log` e outros padrões sensíveis
 
 ---
@@ -124,7 +124,7 @@ docker run -d -p 8080:80 \
   -e DB_USER=admin \
   -e DB_PASS=senha-segura \
   -e DB_NAME=cardapio \
-  --name cardapio-container cardapio-digital:v1
+  --name cardapio-app cardapio-digital:v1
 ```
 
 Acesse em `http://localhost:8080`.
